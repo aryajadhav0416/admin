@@ -7,3 +7,4 @@ Practical List:
 6. Unconstrained Optimization: Direct Root Methods (Incorrect)
 7. Constrained Optimization: Equality Constraints (Correct)
 8. Constrained Optimization: Inequality Constraints (Correct)
+#Refer aryajadhav0416/admin/main/otexam/....txt
