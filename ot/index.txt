@@ -4,6 +4,6 @@ Practical List:
 3. Classical Optimization Techniques 
 4. Unconstrained Optimization: Elimination Methods 
 5. Unconstrained Optimization: Interpolation Method 
-6. Unconstrained Optimization: Direct Root Methods
-7. Constrained Optimization: Equality Constraints 
-8. Constrained Optimization: Inequality Constraints
+6. Unconstrained Optimization: Direct Root Methods (Incorrect)
+7. Constrained Optimization: Equality Constraints (Correct)
+8. Constrained Optimization: Inequality Constraints (Correct)
