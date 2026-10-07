@@ -1,7 +1,7 @@
 Practical List:
-1. Introduction to Optimization 
+1. Introduction to Optimization (Correct)
 2. Introduction to MATLAB 
-3. Classical Optimization Techniques 
+3. Classical Optimization Techniques (Correct)
 4. Unconstrained Optimization: Elimination Methods (Incorrect)
 5. Unconstrained Optimization: Interpolation Method (Incorrect) Actually Prac 4
 6. Unconstrained Optimization: Direct Root Methods (Incorrect)
