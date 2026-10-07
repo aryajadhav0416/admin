@@ -1,0 +1,437 @@
+OPTIMIZATION TECHNIQUES (OT) - VIVA QUICK REVISION ===================================================
+
+1. INTRODUCTION TO OPTIMIZATION
+
+---
+
+Optimization = finding the best solution (minimum or maximum) of an objective function.
+
+Objective function = function that we want to minimize or maximize.
+
+Example: f(x) = (x - 3)^2 + 4
+
+Minimum occurs at: x = 3 f(x) = 4
+
+Important Python: np.linspace() = generates equally spaced values. np.argmin() = returns index of minimum value. np.argmax() = returns index of maximum value. plt.plot() = plots a graph. plt.scatter() = marks a point on graph.
+
+Viva: Q: What is optimization? A: Finding the minimum or maximum value of an objective function.
+
+Q: What is an objective function? A: The function that we want to minimize or maximize.
+
+Q: Why do we plot the objective function? A: To visualize its behavior and locate the optimum.
+
+2. PYTHON FOR OPTIMIZATION
+
+---
+
+NumPy = numerical computing library. Matplotlib = plotting/visualization library. SymPy = symbolic mathematics library. SciPy = scientific computing and optimization library.
+
+np.linspace(a,b,n): Generates n equally spaced values from a to b.
+
+np.argmin(array): Returns the index of the minimum element.
+
+np.argmax(array): Returns the index of the maximum element.
+
+np.meshgrid(): Creates coordinate grids for 2D plotting.
+
+plt.plot(): Creates a line plot.
+
+plt.scatter(): Plots individual points.
+
+plt.contour(): Creates contour lines of a 2D function.
+
+Viva: Q: Why use NumPy? A: For numerical calculations and arrays.
+
+Q: Why use Matplotlib? A: For plotting and visualization.
+
+Q: Why use SymPy? A: For symbolic mathematical operations such as differentiation and solving equations.
+
+3. CLASSICAL OPTIMIZATION - MINIMA/MAXIMA
+
+---
+
+Classical optimization uses calculus/derivatives to find optimum points.
+
+Example: f(x) = x^2 - 4x
+
+First derivative: f'(x) = 2x - 4
+
+For a critical point: f'(x) = 0
+
+Therefore: 2x - 4 = 0 x = 2
+
+Second derivative: f''(x) = 2
+
+Since: f''(2) \> 0
+
+x = 2 is a local minimum.
+
+Important rules:
+
+f''(x) \> 0 -\> Local minimum f''(x) \< 0 -\> Local maximum f''(x) = 0 -\> Second derivative test is inconclusive
+
+Critical point: A point where f'(x) = 0 or the derivative is undefined.
+
+Viva: Q: Why do we calculate the first derivative? A: To find critical points.
+
+Q: Why do we calculate the second derivative? A: To classify the critical point as minimum or maximum.
+
+Q: What is a critical point? A: A point where the first derivative is zero or undefined.
+
+4. ELIMINATION METHODS
+
+---
+
+Purpose: Elimination methods reduce the search interval to find the optimum.
+
+They are generally derivative-free methods.
+
+Main methods in the practical:
+
+1. Internal Halving
+2. Golden Section
+
+INTERNAL HALVING:
+
+---
+
+Start with an interval \[a,b\].
+
+Calculate points inside the interval: x1, x2, x3
+
+Evaluate: f(x1), f(x2), f(x3)
+
+Compare function values and eliminate the part that cannot contain the minimum.
+
+Repeat until: (b-a) \<= tolerance
+
+Finally: x\_optimum = (a+b)/2
+
+Unimodal function: A function with one optimum in the given interval.
+
+Tolerance: Maximum acceptable error / stopping criterion.
+
+GOLDEN SECTION:
+
+---
+
+Golden Section Search is a derivative-free optimization method.
+
+It reduces the search interval using the golden ratio.
+
+Golden ratio: phi approximately = 1.618
+
+Golden Section is used for one-dimensional optimization.
+
+Important: Golden Section finds an optimum, NOT a root.
+
+BOUNDED METHOD:
+
+---
+
+Bounded minimization searches for the minimum within specified lower and upper bounds.
+
+Example: bounds = (-10,10)
+
+This means: -10 \<= x \<= 10
+
+SciPy: minimize\_scalar()
+
+Viva: Q: What is an elimination method? A: A method that repeatedly reduces the search interval to locate the optimum.
+
+Q: Why is Golden Section called Golden Section? A: Because it divides the interval according to the golden ratio.
+
+Q: Does Golden Section require derivatives? A: No.
+
+Q: What is tolerance? A: The stopping criterion that determines when the interval is sufficiently small.
+
+Q: What is a unimodal function? A: A function with one optimum in the search interval.
+
+5. INTERPOLATION - QUADRATIC INTERPOLATION
+
+---
+
+Interpolation means estimating a function or optimum using known data points.
+
+Quadratic interpolation: A quadratic equation is fitted using three points.
+
+General quadratic: f(x) = ax^2 + bx + c
+
+Three known points are used to construct the quadratic approximation.
+
+The estimated optimum is obtained from the fitted quadratic.
+
+Important: Interpolation uses available function values to estimate the optimum.
+
+Difference from elimination: Elimination reduces the search interval. Interpolation approximates the function using a mathematical model.
+
+Viva: Q: What is interpolation? A: Estimating unknown values using known data points.
+
+Q: Why is quadratic interpolation called quadratic? A: Because a second-degree polynomial is used.
+
+Q: How many points are normally required? A: Three points for a quadratic interpolation.
+
+6. ROOT-FINDING / NEWTON-RAPHSON
+
+---
+
+Root-finding means finding x such that:
+
+f(x) = 0
+
+Newton-Raphson is an iterative root-finding method.
+
+Formula:
+
+x_(n+1) = x_n - f(x_n) / f'(x_n)
+
+It starts with an initial guess and repeatedly improves the solution.
+
+Important: Newton-Raphson is a ROOT-FINDING method.
+
+It is NOT an inequality-constraint method.
+
+For optimization, Newton's method can also be applied to f'(x)=0 to find stationary points.
+
+Viva: Q: What is root finding? A: Finding the value of x for which f(x)=0.
+
+Q: Is Newton-Raphson an optimization method? A: Primarily it is a root-finding method, although Newton's method can also be used for optimization by applying it to the derivative.
+
+Q: What does Newton-Raphson require? A: Function value, derivative, and an initial guess.
+
+Q: What is an iteration? A: One update/repetition of the numerical method.
+
+7. EQUALITY CONSTRAINTS - LAGRANGE MULTIPLIER
+
+---
+
+Constraint = condition that restricts possible solutions.
+
+Equality constraint: g(x,y) = 0
+
+Example: x + y = 4
+
+Objective: f(x,y) = (x-1)^2 + (y-2)^2
+
+Constraint: x + y - 4 = 0
+
+Lagrange multiplier method:
+
+nabla f = lambda \* nabla g
+
+The idea is that at the constrained optimum, the gradient of the objective and gradient of the constraint are parallel.
+
+For the example: Optimal point = (2,2)
+
+Important: 'type': 'eq' means equality constraint in SciPy.
+
+IMPORTANT ABOUT YOUR CODE: Your equality-constraint code uses:
+
+method = 'SLSQP'
+
+It does NOT explicitly calculate the Lagrange multiplier.
+
+SLSQP = Sequential Least Squares Programming.
+
+It is a numerical constrained optimization algorithm.
+
+Viva: Q: What is an equality constraint? A: A constraint that must be satisfied exactly, such as x+y=4.
+
+Q: What does type='eq' mean? A: The constraint must equal zero.
+
+Q: What is Lagrange multiplier? A: A method for solving optimization problems with equality constraints.
+
+Q: What is SLSQP? A: Sequential Least Squares Programming, a numerical constrained optimization method.
+
+8. INEQUALITY CONSTRAINTS
+
+---
+
+Inequality constraint: g(x) \>= 0 or g(x) \<= 0
+
+IMPORTANT FOR SCIPY: For scipy.optimize.minimize:
+
+'type': 'ineq'
+
+means:
+
+g(x) \>= 0
+
+Example:
+
+return x - 1
+
+means:
+
+x - 1 \>= 0
+
+Therefore:
+
+x \>= 1
+
+Multiple inequality constraints can be used.
+
+Example: x \>= 2 y \>= 3
+
+In code:
+
+constraint2: return x - 2
+
+constraint3: return y - 3
+
+IMPORTANT: Your multiple-constraint example contains BOTH:
+
+- one equality constraint
+- two inequality constraints
+
+Therefore it is a MIXED constrained optimization problem.
+
+If all constraints are 'ineq', then it is a pure inequality-constrained problem.
+
+Viva: Q: What does type='ineq' mean in SciPy? A: The constraint function must be greater than or equal to zero.
+
+Q: If return x-1, what is the constraint? A: x - 1 \>= 0 therefore x \>= 1.
+
+Q: What is an inequality constraint? A: A constraint expressed using \<= or \>=.
+
+Q: Is Bisection an inequality-constraint method? A: No. Bisection is a root-finding method.
+
+IMPORTANT: Bisection solves: f(x) = 0
+
+It should normally be classified under ROOT-FINDING, not inequality constraints.
+
+IMPORTANT DIFFERENCES TO REMEMBER =================================
+
+Optimization: Find minimum/maximum.
+
+Root finding: Find x where f(x)=0.
+
+Elimination: Reduce search interval.
+
+Interpolation: Approximate function using known points.
+
+Classical optimization: Uses derivatives.
+
+Equality constraint: g(x)=0
+
+Inequality constraint: g(x)\>=0 or g(x)\<=0
+
+SciPy 'eq': Constraint = 0
+
+SciPy 'ineq': Constraint \>= 0
+
+Lagrange multiplier: Used for equality-constrained optimization.
+
+SLSQP: Numerical method for constrained optimization.
+
+Golden Section: Derivative-free optimization method.
+
+Newton-Raphson: Root-finding method.
+
+YOUR PRACTICAL MAPPING ======================
+
+Prac 1: Introduction to Optimization Objective function evaluation and plotting -\> Your np.linspace + np.argmin + plotting code -\> CORRECT
+
+Prac 2: Python for Optimization NumPy, Matplotlib, basic functions -\> Python/NumPy/Matplotlib concepts -\> CORRECT
+
+Prac 3: Classical Optimization Minima/Maxima for single/two variables -\> SymPy differentiation + critical point + second derivative -\> CORRECT
+
+Prac 4: Elimination Internal Halving / Golden Section -\> Internal Halving code -\> Golden Section code -\> Bounded minimization code -\> CORRECT
+
+Prac 5: Interpolation Quadratic Interpolation -\> Need quadratic interpolation code -\> Not yet covered by your pasted code
+
+Prac 6: Root-Finding Newton-Raphson -\> Need Newton-Raphson code -\> Your Internal Halving code is NOT Prac 6
+
+Prac 7: Equality Constraints Lagrange Multiplier -\> Your x+y=4 constrained optimization -\> Conceptually CORRECT -\> But code uses SLSQP, not explicit Lagrange multiplier calculation
+
+Prac 8: Inequality Constraints -\> Your x\>=1 / x\>=2 / y\>=3 code -\> CORRECT as inequality-constrained optimization -\> But it does NOT use Bisection
+
+TOP 15 VIVA ANSWERS TO MEMORIZE ================================
+
+1. What is optimization?
+
+Finding the minimum or maximum of an objective function.
+
+2. What is an objective function?
+
+The function being minimized or maximized.
+
+3. What is a constraint?
+
+A condition that restricts the feasible solution.
+
+4. What is a critical point?
+
+A point where the first derivative is zero or undefined.
+
+5. What does f'' \> 0 indicate?
+
+Local minimum.
+
+6. What does f'' \< 0 indicate?
+
+Local maximum.
+
+7. What is an elimination method?
+
+A method that reduces the search interval to locate the optimum.
+
+8. What is Golden Section?
+
+A derivative-free optimization method based on the golden ratio.
+
+9. What is interpolation?
+
+Estimating unknown values using known data points.
+
+10. What is root finding?
+
+Finding x such that f(x)=0.
+
+11. What is Newton-Raphson?
+
+An iterative root-finding method.
+
+12. What is an equality constraint?
+
+A constraint that must equal zero.
+
+13. What is an inequality constraint in SciPy?
+
+A constraint function that must be \>= 0.
+
+14. What is SLSQP?
+
+Sequential Least Squares Programming, a numerical constrained optimization algorithm.
+
+15. Is Bisection an inequality-constraint method?
+
+No. Bisection is a root-finding method.
+
+ONE-LINE MEMORY TRICKS ======================
+
+Objective -\> What we want to optimize.
+
+Constraint -\> What limits us.
+
+Derivative -\> Find critical point.
+
+Second derivative -\> Classify minimum/maximum.
+
+Elimination -\> Reduce interval.
+
+Golden Section -\> Golden ratio.
+
+Interpolation -\> Fit/estimate.
+
+Newton-Raphson -\> Find root.
+
+Lagrange -\> Equality constraint.
+
+SLSQP -\> Constrained numerical optimization.
+
+ineq in SciPy -\> Function \>= 0.
+
+eq in SciPy -\> Function = 0.
+
+Bisection -\> Root finding, NOT inequality constraints.
